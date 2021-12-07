@@ -25,7 +25,7 @@
 
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha" name="senha">
+                <input type="password" class="form-control" id="senha" name="password">
             </div>
 
             <div class="mb-3">
