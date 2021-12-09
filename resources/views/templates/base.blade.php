@@ -21,9 +21,13 @@
         </ul>
 
         <div class="text-end">
-          @if (session('usuario'))
-            Olá, {{ session('usuario.nome') }}!
-            <a href="{{ route('logout') }}" role="button" class="btn btn-outline-danger">Sair</a>
+
+          @if (Auth::user())
+            <span class='p-2'>
+              Olá, {{ Auth::user()->nome}}! 
+            </span>
+              <a href="{{ route('logout') }}" role="button" class="btn btn-outline-danger">Sair</a>
+
           @else
             <a href="{{ route('login') }}" role="button" class="btn btn-outline-light me-2">Login</a>
             <a href="{{ route('usuarios.inserir') }}" role="button" class="btn btn-warning">Cadastro</a>

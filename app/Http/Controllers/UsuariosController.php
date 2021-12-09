@@ -12,9 +12,7 @@ class UsuariosController extends Controller
 {
     public function index()
     {
-        var_dump(Auth::user());
         $usuarios = Usuario::orderBy('id', 'asc')->get();
-
         return view('usuarios.index', ['usuarios' => $usuarios, 'pagina' => 'usuarios']);
     }
 
@@ -64,9 +62,13 @@ class UsuariosController extends Controller
         return view('usuarios.login');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        session()->forget('usuario');
+        Auth::logout();
+
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
         return redirect()->route('home');
     }
 }

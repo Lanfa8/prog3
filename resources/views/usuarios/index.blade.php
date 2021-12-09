@@ -21,7 +21,8 @@
         </tr>
 
         @foreach ($usuarios as $usuario)
-        <tr>
+        
+        <tr class="table-{{ $usuario->admin ? 'primary' : 'warning' }}">  
             <td>{{ $usuario->id }}</td>
             <td>{{ $usuario->nome }}</td>
             <td>{{ $usuario->email }}</td>
