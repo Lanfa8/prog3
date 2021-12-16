@@ -3,8 +3,8 @@
 use App\Http\Controllers\RecadosController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\UsuariosController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('home', ['pagina' => 'home']);
 })->name('home');
 
-Route::get('produtos', [ProdutosController::class, 'index'])->name('produtos');
+Route::get('produtos', [ProdutosController::class, 'index'])->middleware(['verified'])->name('produtos');
 
 Route::get('/produtos/inserir', [ProdutosController::class, 'create'])->name('produtos.inserir');
 
@@ -45,6 +45,10 @@ Route::prefix('usuarios')->group(function() {
 
 });
 
+Route::get('/profile', [UsuariosController::class, 'show'])->middleware(['verified'])->name('profile.show');
+Route::get('/profile/edit', [UsuariosController::class, 'edit'])->middleware(['verified'])->name('profile.edit');
+Route::get('/profile/password', [UsuariosController::class, 'password'])->middleware(['verified'])->name('profile.password');
+
 Route::get('/login', [UsuariosController::class, 'login'])->name('login');
 Route::post('/login', [UsuariosController::class, 'login']);
 
@@ -67,3 +71,15 @@ Route::put('/recados/{recado}/editar', [RecadosController::class, 'update'])->na
 Route::get('/recados/{recado}/apagar', [RecadosController::class, 'remove'])->name('recados.remove');
 
 Route::delete('/recados/{recado}/apagar', [RecadosController::class, 'destroy'])->name('recados.destroy');
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email', ['pagina' => 'verify-email']);
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function 
+    (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect()->route('home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('/email/verification-notification', [RecadosController::class, 'index'])->name('email.verify');

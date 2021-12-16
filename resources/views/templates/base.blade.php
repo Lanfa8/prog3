@@ -7,7 +7,10 @@
     <title>@yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Erica+One&display=swap" rel="stylesheet">
+  </head>
 <body>
 
     <header class="p-3 bg-dark text-white mb-3">
@@ -23,9 +26,9 @@
         <div class="text-end">
 
           @if (Auth::user())
-            <span class='p-2'>
+            <a href="{{ route('profile.show') }}" class='p-2 link-light'>
               Olá, {{ Auth::user()->nome}}! 
-            </span>
+            </a>
               <a href="{{ route('logout') }}" role="button" class="btn btn-outline-danger">Sair</a>
 
           @else
@@ -40,7 +43,6 @@
     <div class="container">
         <div class="row">
             <h1>@yield('h1')</h1>
-            <hr>
         </div>
 
         <!-- Conteúdo -->
