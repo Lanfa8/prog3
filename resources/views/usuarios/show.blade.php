@@ -9,8 +9,12 @@
         <!-- <a class="btn btn-primary" href="{{route('usuarios.inserir')}}" role="button">Cadastrar usuário</a> -->
     </div>
 </div>
+@if (Auth::user()->admin)
+<div class="row p-4" style="background-image: url({{asset('/images/maxresdefault.jpg')}}); height:700px">
+@else
+<div class="row p-4" style="background-color: azure">
+@endif
 
-<div class="row" style="background-image: url({{asset('/images/maxresdefault.jpg')}}); height:700px ">
     <div class='col'>
         <div class="row">
             <div class='col'>
@@ -33,6 +37,11 @@
     <div class="col">
         <img src="{{asset('/images/user.jpg')}}" alt="Image"/>
 
+    </div>
+</div>
+<div class="row">
+    <div class="col align-right">
+        <a href="{{route('profile.edit')}}"><button  class="btn btn-primary">Editar</button></a>    
     </div>
 </div>
 @endsection

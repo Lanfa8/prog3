@@ -47,6 +47,8 @@ Route::prefix('usuarios')->group(function() {
 
 Route::get('/profile', [UsuariosController::class, 'show'])->middleware(['verified'])->name('profile.show');
 Route::get('/profile/edit', [UsuariosController::class, 'edit'])->middleware(['verified'])->name('profile.edit');
+Route::post('/profile/edit', [UsuariosController::class, 'edit'])->name('profile.saveEdit');;
+
 Route::get('/profile/password', [UsuariosController::class, 'password'])->middleware(['verified'])->name('profile.password');
 
 Route::get('/login', [UsuariosController::class, 'login'])->name('login');

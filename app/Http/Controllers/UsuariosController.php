@@ -76,4 +76,24 @@ class UsuariosController extends Controller
     {
         return view('usuarios.show', ['pagina' => 'usuarios']);
     }
+    public function edit(Request $form)
+    {
+        if ($form->isMethod('POST'))
+        {
+            $usuario = Auth::user();
+            if($form->email != Auth::user()->email)
+            {
+                $usuario->email_verified_at = null;
+                event(new Registered($usuario));
+            }
+            $usuario->nome = $form->nome;
+            $usuario->email = $form->email;
+            $usuario->usuario = $form->usuario;
+          
+            $usuario->save();
+            return view('usuarios.show', ['pagina' => 'usuarios']);
+        } else {
+            return view('usuarios.edit', ['pagina' => 'usuarios']);
+        }
+    }
 }
