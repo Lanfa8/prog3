@@ -43,5 +43,8 @@
     <div class="col align-right">
         <a href="{{route('profile.edit')}}"><button  class="btn btn-primary">Editar</button></a>    
     </div>
+    <div class="col align-right">
+        <a href="{{route('profile.password')}}"><button  class="btn btn-warning">Trocar senha</button></a>    
+    </div>
 </div>
 @endsection
