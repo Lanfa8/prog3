@@ -3,16 +3,11 @@
 {{-- @section('h1', 'Página de perfil') --}} 
 
 @section('content')
-<div class="row">
-    <div class="col">
-        <!-- <p>erfil</p> -->
-        <!-- <a class="btn btn-primary" href="{{route('usuarios.inserir')}}" role="button">Cadastrar usuário</a> -->
-    </div>
-</div>
+
 @if (Auth::user()->admin)
-<div class="row p-4" style="background-image: url({{asset('/images/maxresdefault.jpg')}}); height:700px">
+    <h1 class="w-100 text-center p-3"> O admin está ONLINE 👀</h1>
 @else
-<div class="row p-4" style="background-color: azure">
+    <h1 class="w-100 text-center p-3"> Admin off, liberada a baderna 🎉🎉🎉</h1>
 @endif
 
     <div class='col'>
