@@ -30,6 +30,7 @@
                 <td>
                     @if (Auth::user()->admin)
                         <a href="{{ route('produtos.edit', $prod) }}" class="btn btn-primary btn-sm" role="button"><i class="bi bi-pencil-square"></i> Editar</a>
+                        <a href="{{ route('image.get', $prod) }}" class="btn btn-primary btn-sm" role="button"><i class="bi bi-card-image"></i> Editar imagem</a>
                     @endif
                     <a href="{{ route('produtos.remove', $prod) }}" class="btn btn-danger btn-sm" role="button"><i class="bi bi-trash"></i> Apagar</a>
                 </td>

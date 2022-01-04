@@ -87,3 +87,7 @@ Route::get('/email/verify/{id}/{hash}', function
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('/email/verification-notification', [RecadosController::class, 'index'])->name('email.verify');
+
+Route::get('/produtos/{prod}/imagens', [ProdutosController::class, 'images'])->name('image.get');
+
+Route::post('/produtos/imagens', [ProdutosController::class, 'images'])->name('image.create');
