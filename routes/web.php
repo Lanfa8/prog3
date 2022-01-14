@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\RecadosController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\UsuariosController;
@@ -91,3 +92,11 @@ Route::get('/email/verification-notification', [RecadosController::class, 'index
 Route::get('/produtos/{prod}/imagens', [ProdutosController::class, 'images'])->name('image.get');
 
 Route::post('/produtos/imagens', [ProdutosController::class, 'images'])->name('image.create');
+
+Route::get('blog', [BlogController::class, 'index'])->name('blog');
+
+Route::get('/blog/inserir', [BlogController::class, 'create'])->name('blog.inserir');
+
+Route::post('/blog/inserir', [BlogController::class, 'store'])->name('blog.gravar');
+
+Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');

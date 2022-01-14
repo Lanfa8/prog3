@@ -22,6 +22,7 @@
           <li><a href="{{route('produtos')}}" class="nav-link px-2 @if ($pagina == 'produtos') text-secondary @else text-white @endif">Produtos</a></li>
           <li><a href="{{route('recados')}}" class="nav-link px-2 @if ($pagina == 'recados') text-secondary @else text-white @endif">Recados</a></li>
           <li><a href="/usuarios" class="nav-link px-2 @if ($pagina == 'usuarios') text-secondary @else text-white @endif">Usuários</a></li>
+          <li><a href="{{route('blog')}}" class="nav-link px-2 @if ($pagina == 'blog') text-secondary @else text-white @endif">Blog</a></li>
         </ul>
 
         <div class="text-end">
